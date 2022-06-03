@@ -1,24 +1,26 @@
 'use strict';
 
-const express = require('express');
-const { Server } = require('ws');
+wss.on("connection", ws => {
+    console.log("new client connected");
 
-const PORT = process.env.PORT || 3000;
-const INDEX = '/index.html';
+    ws.on("message", data => {
+        console.log(`from Client: ${data}`)
+        if  (data == "88ef9be655f2d44681d4cff75beaf74d7758fb387f499c9d3014874817f6ff29")
 
-const server = express()
-  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+        {
+            console.log(`match`)
 
-const wss = new Server({ server });
+            ws.send('match')
+        }
 
-wss.on('connection', (ws) => {
-  console.log('Client connected');
-  ws.on('close', () => console.log('Client disconnected'));
+
+    });
+    ws.on("close", () => {
+        console.log("the client has dis-connected");
+    });
+
+    ws.onerror = function () {
+        console.log("Some Error occurred")
+    }
 });
-
-setInterval(() => {
-  wss.clients.forEach((client) => {
-    client.send(new Date().toTimeString());
-  });
-}, 1000);
+console.log("The WebSocket server is running on port 1211");
