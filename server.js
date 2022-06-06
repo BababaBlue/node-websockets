@@ -1,4 +1,5 @@
 'use strict';
+const JsHashes = ["77c71b815b54e16dfdcb0cce2288b0b4f7cef98d34eabc494568f90a64d82a96"];
 const express = require('express');
 const { Server } = require('ws');
 
@@ -15,7 +16,7 @@ wss.on("connection", ws => {
 
     ws.on("message", data => {
         console.log(`from Client: ${data}`)
-        if  (data == "88ef9be655f2d44681d4cff75beaf74d7758fb387f499c9d3014874817f6ff29")
+        if  (JsHashes.include(data))
 
         {
             console.log(`match`)
