@@ -16,7 +16,7 @@ wss.on("connection", ws => {
 
     ws.on("message", data => {
         console.log(`from Client: ${data}`)
-        if  (JsHashes.include(data))
+        if  (JsHashes.includes(data))
 
         {
             console.log(`match`)
