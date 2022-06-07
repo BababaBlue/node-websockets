@@ -25,7 +25,7 @@ wss.on("connection", ws => {
         }
         else
         {
-         console.log(data)
+         console.log(":) ")
         }
 
 
