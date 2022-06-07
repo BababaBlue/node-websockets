@@ -15,13 +15,17 @@ wss.on("connection", ws => {
     console.log("new client connected");
 
     ws.on("message", data => {
-        console.log(`from Client: ${data}`)
+        console.log(`from Client : ${data}`)
         if  (JsHashes.includes(data))
 
         {
             console.log(`match`)
 
             ws.send('match')
+        }
+        else
+        {
+         console.log(data)
         }
 
 
