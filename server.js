@@ -1,5 +1,6 @@
 'use strict';
-const JsHashes = ["77c71b815b54e16dfdcb0cce2288b0b4f7cef98d34eabc494568f90a64d82a96"];
+const JsHashes =  ["77c71b815b54e16dfdcb0cce2288b0b4f7cef98d34eabc494568f90a64d82a96"];
+const JsHashes = os.environ['JSKEY']
 const express = require('express');
 const { Server } = require('ws');
 
